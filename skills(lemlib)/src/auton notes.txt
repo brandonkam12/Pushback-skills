@@ -1,0 +1,63 @@
+void auton_notes(){
+
+        //to move to a certain point:
+        very good apparently
+        10 is in inches
+            chassis.moveToPoint(10, 10, 4000); // move the chassis to (10, 10)
+                                    // with a timeout of 4000 ms
+
+    //to move while controlling direction it faces afterwards:
+    chassis.moveToPose(10, 10, 90, 4000); // move the chassis to (10, 10, 90)
+                                      // theta: 90 (the third param) means to face 90 degrees when finish
+
+    //this is without turning, very basic
+        //to move BACKWARDS:
+            // move the chassis to x = 20, y = 15 with a timeout of 4000ms
+            // but face the point with the back of the chassis
+            chassis.moveToPose(20, 15, theta, 4000, {.forwards = false}, true);
+
+    
+
+
+
+    //if the turning is inaccurate, then replace the inaccurate line of code with this:
+    chassis.moveToPose(
+    0, // replace with x value of location
+    0, // replace with y value of location
+    0, // theta (direction facing)
+    4000, // timeout of 4000ms
+    {.forwards = true},
+    {.lead = 0.3, .horizontalDrift = 2}
+    );
+
+    //follow jerryio path document:
+        // lookahead distance: 15 inches
+    // timeout: 2000 ms
+    chassis.follow(FILENAME_txt, 15, 2000);
+    
+    // follow the next path, but with the robot going backwards
+    chassis.follow(FILENAME_txt, 15, 2000, false);
+
+    //to exit early or to motion chain:
+    void goAroundObstacle() {
+    chassis.setPose(0, 0, 90);
+
+    // go around obstacle to prevent hitting it
+    chassis.moveToPose(
+        48,
+        -24,
+        90,
+        2000,
+        {.minSpeed=72, .earlyExitRange=8}
+        // a minSpeed of 72 means that the chassis will slow down as
+        // it approaches the target point, but it won't come to a full stop
+
+        // an earlyExitRange of 8 means the movement will exit 8" away from
+        // the target point
+    );
+
+    // go to target position
+    chassis.moveToPose(64, 3, 0, 2000);
+}
+
+}
