@@ -91,6 +91,8 @@ void right(int voltage, double time) {
 void intake_move(int voltage){
 
 	int outtakevoltage = voltage;
+
+
 	
 	mouth.move_voltage(voltage);
 	outtake.move_voltage(outtakevoltage);
@@ -388,11 +390,11 @@ void opcontrol() {
 			stopper.set_value(true);
 		}
 		else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
-			intake_move(12000);
+			intake_move(6000);
 			stopper.set_value(false);
 		}
 		else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
-			intake_move(-12000);
+			intake_move(-6000);
 			stopper.set_value(false);
 		}
 		else{
