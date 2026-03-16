@@ -346,71 +346,71 @@ void autonomous() {
 
 //opcontrol ####################################################################################################################################################################
 
-void opcontrol() {
-	double drive_temp = (left_legs.get_temperature() + right_legs.get_temperature())/2;
-	controller.print(0,0,"DT: %0.1f",drive_temp);
-    while (true) {
+	void opcontrol() {
+		double drive_temp = (left_legs.get_temperature() + right_legs.get_temperature())/2;
+		controller.print(0,0,"DT: %0.1f",drive_temp);
+		while (true) {
+			
+			// get joystick positions
+			int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+			int leftX = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
+			int rightY = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+			int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+
+			// move the robot
+
 		
-        // get joystick positions
-        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int leftX = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
-        int rightY = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
-
-        // move the robot
-
-	
-        
-		// chassis.arcade(leftY, rightX);
-		left_legs.move(leftY + rightX);
-		right_legs.move(leftY - rightX);
+			
+			// chassis.arcade(leftY, rightX);
+			left_legs.move(leftY + rightX);
+			right_legs.move(leftY - rightX);
 
 
-		if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)){
-			scoremode_bool = false; //false is down
-		}
-		else {
-			scoremode_bool = true; //true is up
-		}
+			if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)){
+				scoremode_bool = false; //false is down
+			}
+			else {
+				scoremode_bool = true; //true is up
+			}
 
-		if (scoremode_bool == true) {
-			midgoalswitch.set_value(true);
-		}
-		else {
-			midgoalswitch.set_value(false);
-		}
+			if (scoremode_bool == true) {
+				midgoalswitch.set_value(true);
+			}
+			else {
+				midgoalswitch.set_value(false);
+			}
 
-		if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
-			intake_move(12000);
-			stopper.set_value(true);
+			if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
+				intake_move(12000);
+				stopper.set_value(true);
+
+			}
+			else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
+				intake_move(-12000);
+				stopper.set_value(true);
+			}
+			else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
+				intake_move(6000);
+				stopper.set_value(false);
+			}
+			else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
+				intake_move(-6000);
+				stopper.set_value(false);
+			}
+			else{
+				intake_brake();
+			}
+
+			//pneumatic
+			if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+				wing.set_value(false);
+			}
+			else {
+				wing.set_value(true);
+			}
+			
+			// delay to save resources
+			pros::delay(25);
 
 		}
-		else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)){
-			intake_move(-12000);
-			stopper.set_value(true);
-		}
-		else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
-			intake_move(6000);
-			stopper.set_value(false);
-		}
-		else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
-			intake_move(-6000);
-			stopper.set_value(false);
-		}
-		else{
-			intake_brake();
-		}
-
-		//pneumatic
-		if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-			wing.set_value(false);
-		}
-		else {
-			wing.set_value(true);
-		}
-		
-        // delay to save resources
-        pros::delay(25);
-
-    }
-}
+	}
