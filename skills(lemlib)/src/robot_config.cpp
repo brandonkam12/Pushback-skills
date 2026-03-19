@@ -5,14 +5,15 @@ namespace {
 constexpr int MOUTH_PORT = 1;
 constexpr int OUTTAKE_PORT = -10;
 constexpr int HORIZONTAL_PORT = 15;
-constexpr int VERTICAL_PORT = 16;
+constexpr int VERTICAL_PORT = -16;
 constexpr int IMU_PORT = 17;
 constexpr int DISTANCEBACK_PORT = 9;
-constexpr int DISTANCELEFT_PORT = 17;
-constexpr int DISTANCERIGHT_PORT = 17;
-constexpr int DISTANCEFRONT_PORT = 17;
+constexpr int DISTANCELEFT_PORT = 2;
+constexpr int DISTANCERIGHT_PORT = 8;
+constexpr int DISTANCEFRONT_PORT = 3;
 }  // namespace
 
+//every time u add something here, add it to the robot_config.hpp file as well as an extern
 
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
@@ -54,16 +55,18 @@ lemlib::OdomSensors sensors(&vertical_tracking_wheel,
                             nullptr, 
                             &imu);
 
-lemlib::ControllerSettings lateral_controller(10, 
+lemlib::ControllerSettings lateral_controller(9.25, 
                                               0, 
-                                              40, 
+                                              75,
                                               3, 
                                               1, 
                                               100, 
                                               3, 
                                               500, 
-                                              20);
-lemlib::ControllerSettings angular_controller(3, 
+                                              20
+);
+
+lemlib::ControllerSettings angular_controller(2, 
                                               0, 
                                               10, 
                                               0, 
@@ -71,7 +74,8 @@ lemlib::ControllerSettings angular_controller(3,
                                               0, 
                                               0, 
                                               0, 
-                                              20);
+                                              20
+);
 
 lemlib::Chassis chassis(drivetrain, 
                         lateral_controller, 

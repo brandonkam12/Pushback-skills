@@ -6,6 +6,7 @@
 #include "pros/misc.hpp"
 #include "pros/motor_group.hpp"
 #include "pros/rotation.hpp"
+#include "pros/distance.hpp"
 
 
 extern pros::Controller controller;
@@ -22,6 +23,13 @@ extern pros::adi::Pneumatics midgoalswitch;
 extern pros::adi::Pneumatics stopper;
 
 extern bool scoremode_bool;
+
+
+extern pros::Distance distance_back;
+extern pros::Distance distance_left;
+extern pros::Distance distance_right;
+extern pros::Distance distance_front;
+
 
 extern pros::Imu imu;
 extern pros::Rotation horizontal_sensor;
