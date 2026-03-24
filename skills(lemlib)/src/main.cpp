@@ -46,7 +46,7 @@ void initialize() {
     pros::lcd::initialize();
 
     mouth.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    outtake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);//hi
+    outtake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     left_legs.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     right_legs.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
@@ -54,6 +54,7 @@ void initialize() {
     wing.set_value(false);
     midgoalswitch.set_value(true);
     stopper.set_value(true);
+    intakelift.set_value(true);
 
     imu.reset();
     chassis.calibrate();
@@ -109,12 +110,18 @@ void opcontrol() {
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
             intake_move(-12000);
             stopper.set_value(true);
+            if (selected_auton == 2) {
+                intakelift.set_value(false);
+            }
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             intake_move(12000);
             stopper.set_value(false);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
             intake_move(-12000);
             stopper.set_value(false);
+            if (selected_auton == 2) {
+                intakelift.set_value(false);
+            }
         } else {
             intake_brake();
         }
@@ -128,6 +135,13 @@ void opcontrol() {
         if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
             bar.set_value(bar_bool);
             bar_bool = !bar_bool;
+        }
+        
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+            midgoaldescore.set_value(true);
+        }
+        else {
+            midgoaldescore.set_value(false);
         }
 
 

@@ -21,6 +21,8 @@ extern pros::adi::Pneumatics bar;
 extern pros::adi::Pneumatics wing;
 extern pros::adi::Pneumatics midgoalswitch;
 extern pros::adi::Pneumatics stopper;
+extern pros::adi::Pneumatics midgoaldescore;
+extern pros::adi::Pneumatics intakelift;
 
 extern bool scoremode_bool;
 
