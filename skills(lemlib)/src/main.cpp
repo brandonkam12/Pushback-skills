@@ -46,7 +46,7 @@ void initialize() {
     pros::lcd::initialize();
 
     mouth.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    outtake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    outtake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);//hi
     left_legs.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     right_legs.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
