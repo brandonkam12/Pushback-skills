@@ -23,7 +23,7 @@ int get_color(double hue) {
     } else if (hue >= 150) {
         c = 0;
     } else {
-        c = 2;
+        c = 2;//hi
     }
     return c;
 }
