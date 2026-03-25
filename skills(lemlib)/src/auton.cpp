@@ -5,7 +5,7 @@
 
 int leftwallx = 72;
 
-int rightwallx = 0;//nigger
+int rightwallx = 0;
 
 void skillsrightxreset() {
 	chassis.setPose(((rightwallx - 4.75 - distance_left.get_distance()) * 0.0393701), chassis.getPose().y, chassis.getPose().theta);
@@ -288,17 +288,22 @@ void sawp_auton() {
 	bar.set_value(true);
 
 	chassis.moveToPoint(-15, -42, 2000, {.earlyExitRange=8});
-	chassis.moveToPoint(3, -58, 2000);
-	chassis.turnToHeading(90, 1000);
-	pros::delay(200);
-	bar.set_value(true);
-	chassis.moveToPoint(10, -58, 1000);
-	chassis.moveToPoint(30, -58, 1000);
-	pros::delay(800);
-    chassis.moveToPoint(-8, -58, 2000, {.forwards=false});
-    chassis.moveToPoint(-28, -58.5, 2000, {.forwards=false});
+
+	chassis.moveToPoint(-8, -58, 2000, {.forwards=false});
+    chassis.moveToPoint(-28, -58.5, 2000, {.forwards=false});//scoring 2
 	pros::delay(50);
 	stopper.set_value(true);
+
+	chassis.moveToPoint(3, -58, 2000);
+	chassis.turnToHeading(90, 1000); //match loader 2
+	pros::delay(200);
+	bar.set_value(true);
+	
+	chassis.moveToPoint(10, -58, 1000);
+	chassis.moveToPoint(30, -58, 1000);//this is a change
+	pros::delay(800);
+
+
 
 	
 	chassis.turnToPoint(135, 1000, 500,  {.forwards = false});
