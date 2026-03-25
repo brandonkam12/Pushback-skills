@@ -5,7 +5,7 @@
 
 int leftwallx = 72;
 
-int rightwallx = 0;
+int rightwallx = 0;//nigger
 
 void skillsrightxreset() {
 	chassis.setPose(((rightwallx - 4.75 - distance_left.get_distance()) * 0.0393701), chassis.getPose().y, chassis.getPose().theta);
