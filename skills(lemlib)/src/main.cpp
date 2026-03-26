@@ -13,7 +13,7 @@
 int selector_stage = 1;
 
 // 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 4;
+int selected_auton =3;
 // 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = forwards +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=*=+++++++
 
 // void left_callback() {
@@ -113,11 +113,12 @@ while (imu.is_calibrating()) {
             pros::lcd::register_btn1_cb(middle_callback);
             pros::lcd::register_btn2_cb(right_callback);
             double ex =1.5;
-            pros::lcd::print(0, "X: %f", chassis.getPose().x);
-            pros::lcd::print(1, "Y: %f", chassis.getPose().y);
-            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta);
-            pros::lcd::print(3, "IMU Heading: %f", imu.get_heading());
-            pros::lcd::print(4, "Rotation Sensor: %i", horizontal_sensor.get_position());
+            // pros::lcd::print(0, "X: %f", chassis.getPose().x);
+            // pros::lcd::print(1, "Y: %f", chassis.getPose().y);
+            // pros::lcd::print(2, "Theta: %f", chassis.getPose().theta);
+            // pros::lcd::print(3, "IMU Heading: %f", imu.get_heading());
+            // pros::lcd::print(4, "Rotation Sensor: %i", horizontal_sensor.get_position());
+            printf("imu theta: %lf\n", imu.get_heading());
             pros::delay(20);
             if (selector_stage == 1) {
                 pros::lcd::set_text(7, "left, right, next page");
@@ -129,6 +130,7 @@ while (imu.is_calibrating()) {
                 pros::lcd::set_text(6, "0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards");
                 pros::lcd::set_text(7, "auton selected: " + std::to_string(selected_auton));
             }
+            pros::delay(100);
         }
     });
 
