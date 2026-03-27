@@ -101,7 +101,7 @@ void initialize() {
     intakelift.set_value(true);
 
     chassis.calibrate();
-    pros::delay(5000);
+    pros::delay(1000);
 
 while (imu.is_calibrating()) {
     pros::delay(10);
@@ -142,13 +142,16 @@ void disabled() {}
 void competition_initialize() {}
 
 void autonomous() {
-    run_auton_by_number(selected_auton);
+sawp_auton();
+    // chassis.setPose(0, 0, 0);
+    // // turn to face heading 90 with a very long timeout
+    // chassis.moveToPoint(0, 48, 10000, {.maxSpeed = 70});
 }
 
 void opcontrol() {
     while (true) {
         const double drive_temp = (left_legs.get_temperature() + right_legs.get_temperature()) / 2;
-        // controller.print(0, 0, "DT: %0.1f", drive_temp);
+        controller.print(0, 0, "DT: %0.1f", drive_temp);
 
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);

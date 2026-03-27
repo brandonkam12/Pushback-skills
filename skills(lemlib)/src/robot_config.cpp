@@ -41,8 +41,8 @@ pros::Imu imu(IMU_PORT);
 pros::Rotation horizontal_sensor(HORIZONTAL_PORT);
 pros::Rotation vertical_sensor(VERTICAL_PORT);
 
-lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_sensor, lemlib::Omniwheel::NEW_2, 2.75);
-lemlib::TrackingWheel vertical_tracking_wheel(&vertical_sensor, lemlib::Omniwheel::NEW_2, 2.75);
+lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_sensor, lemlib::Omniwheel::NEW_2, -4.5);
+lemlib::TrackingWheel vertical_tracking_wheel(&vertical_sensor, lemlib::Omniwheel::NEW_2, 0);
 
 lemlib::Drivetrain drivetrain(&left_legs, 
                               &right_legs, 
@@ -57,26 +57,26 @@ lemlib::OdomSensors sensors(&vertical_tracking_wheel,
                             nullptr, 
                             &imu);
 
-lemlib::ControllerSettings lateral_controller(9.25, 
-                                              0,
-                                              80,
-                                              3, 
-                                              1, 
-                                              100, 
-                                              3, 
-                                              500, 
-                                              20
+lemlib::ControllerSettings lateral_controller(9, // proportional gain (kP)
+                                              0, // integral gain (kI)
+                                              4, // derivative gain (kD)
+                                              3, // anti windup
+                                              1, // small error range, in inches
+                                              100, // small error range timeout, in milliseconds
+                                              3, // large error range, in inches
+                                              500, // large error range timeout, in milliseconds
+                                              20 // maximum acceleration (slew)
 );
 
-lemlib::ControllerSettings angular_controller(2, 
-                                              0, 
-                                              10, 
-                                              0, 
-                                              0, 
-                                              0, 
-                                              0, 
-                                              0, 
-                                              20
+lemlib::ControllerSettings angular_controller(2.05, // proportional gain (kP)
+                                              0, // integral gain (kI)
+                                              7.4, // derivative gain (kD)
+                                              0, // anti windup
+                                              0, // small error range, in inches
+                                              0, // small error range timeout, in milliseconds
+                                              0, // large error range, in inches
+                                              0, // large error range timeout, in milliseconds
+                                              0 // maximum acceleration (slew)
 );
 
 lemlib::Chassis chassis(drivetrain, 
