@@ -30,6 +30,7 @@ void left_auton() {
 	pros::delay(250);
 
 	chassis.turnToPoint(-30.132, 16.266, 700);
+	bar.set_value(false);
 	chassis.moveToPoint(-30.132, 16.266, 800);
 
 	// leftxreset();
