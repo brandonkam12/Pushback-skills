@@ -284,11 +284,11 @@ void sawp_auton() {
 	chassis.waitUntilDone();
 
 	chassis.setPose({0,0,0});
-	chassis.moveToPoint(0,27,700);
-	chassis.turnToPoint(-70,0,500);
+	chassis.moveToPoint(0, 25, 700);
+	chassis.turnToPoint(-70, 0, 500);
 
 
-	chassis.setPose({0,0,0});
+	chassis.setPose({0, 0, 0});
     chassis.moveToPoint(67, -15, 1000, {.forwards=false, .maxSpeed=90}); //scoring long goal 2
 	chassis.waitUntilDone();
 
@@ -296,7 +296,7 @@ void sawp_auton() {
 	intake_move(12000);
 	pros::delay(600);
 
-	chassis.setPose({0,0,0});
+	chassis.setPose({0, 0, 0});
 	bar.set_value(true);
 	chassis.moveToPoint(0, 48, 1000);
 	stopper.set_value(false);
@@ -306,7 +306,7 @@ void sawp_auton() {
 	chassis.setPose({0,0,0});
 	chassis.turnToHeading(35, 300);
 
-	chassis.moveToPoint(-78,-48,2500, {.forwards=false, .maxSpeed=90});
+	chassis.moveToPoint(-78, -48, 2000, {.forwards=false, .maxSpeed=90});
 	midgoalswitch.set_value(false);
 	intake_move(12000);
 	pros::delay(200);
