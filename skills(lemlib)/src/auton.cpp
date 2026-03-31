@@ -23,22 +23,22 @@ void left_auton() {
   intake_move(12000);
   stopper.set_value(false);
 
-     // set position to x:0, y:0, heading:0
-    chassis.setPose(0, 0, 0);
-	
-	chassis.moveToPoint(-10, 25, 1000, {.maxSpeed = 76});
-	pros::delay(300);
-	bar.set_value(true);
-	pros::delay(200);
-	bar.set_value(false);
-	chassis.turnToPoint(-36, 54, 700);
-	chassis.moveToPoint(-33, 38, 700);
-	pros::delay(600);
-	bar.set_value(true);
-	pros::delay(600);
-	bar.set_value(false);
-	chassis.turnToPoint(-57, 80, 700);
-	chassis.moveToPoint(-11, 33, 700, {.forwards = false});
+  // set position to x:0, y:0, heading:0
+  chassis.setPose(0, 0, 0);
+
+  chassis.moveToPoint(-10, 25, 1000, {.maxSpeed = 76});
+  pros::delay(300);
+  bar.set_value(true);
+  pros::delay(200);
+  bar.set_value(false);
+  chassis.turnToPoint(-36, 54, 700);
+  chassis.moveToPoint(-33, 38, 700);
+  pros::delay(600);
+  bar.set_value(true);
+  pros::delay(600);
+  bar.set_value(false);
+  chassis.turnToPoint(-57, 80, 700);
+  chassis.moveToPoint(-11, 33, 700, {.forwards = false});
 
   chassis.turnToPoint(-50, 0, 600);
   chassis.moveToPoint(4, 45, 600, {.forwards = false});
@@ -54,7 +54,7 @@ void left_auton() {
 	chassis.turnToPoint(-36, -10, 700);
 	bar.set_value(true);
 	chassis.moveToPoint(-30, -30, 700);
-	pros::delay(1000);
+	pros::delay(750);
 	chassis.moveToPoint(-34, 48, 1500, {.forwards = false, .maxSpeed = 60});
 	pros::delay(1500);
 	stopper.set_value(true);
