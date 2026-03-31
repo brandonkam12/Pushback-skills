@@ -16,54 +16,42 @@ void skillsleftxreset() {
 }
 
 void left_auton() {
+intake_move(12000);
+	stopper.set_value(false);
 
-
-	intake_move(12000);
-
-     // left
+     // set position to x:0, y:0, heading:0
     chassis.setPose(0, 0, 0);
 	
-	chassis.moveToPoint(-5.159, 38.056, 1200, {.maxSpeed = 63.5});
-	chassis.waitUntil(36);
-	//bar down
+	chassis.moveToPoint(-10, 25, 1000, {.maxSpeed = 76});
+	chassis.turnToPoint(-36, 54, 700);
+	chassis.moveToPoint(-31, 34, 700);
+	pros::delay(600);
 	bar.set_value(true);
-	pros::delay(250);
-
-	chassis.turnToPoint(-30.132, 16.266, 700);
+	pros::delay(600);
 	bar.set_value(false);
-	chassis.moveToPoint(-30.132, 16.266, 800);
-	// leftxreset();
+	chassis.turnToPoint(-54, 80, 700);
+	chassis.moveToPoint(-8, 33, 700, {.forwards = false});
 
-	pros::delay(500);
-	
-	chassis.turnToPoint(-30.132, 0.8, 700);
-	bar.set_value(true);
-	chassis.moveToPoint(-30.132, 0.8, 800);//match loader
-
-	chassis.moveToPose(-29.332, 34.399, -175, 800, {.forwards = false, .maxSpeed = 50}); //scoring
-	intake_move(12000);
-	stopper.set_value(true);
+	chassis.turnToPoint(0, 33, 700);
+	chassis.moveToPoint(7, 40, 700);
+	intake_move(-6000);
+	intakelift.set_value(false);
 	pros::delay(1000);
 
 	intake_move(12000);
-	stopper.set_value(false);
+	intakelift.set_value(true);
+	chassis.turnToPoint(40, 50, 700);
+	chassis.moveToPoint(-75, -50, 700, {.forwards = false});
 
-	chassis.moveToPoint(-30.132, 16.266, 900);
-
-	chassis.turnToPoint(-38.559, , int timeout)
-
-	chassis.turnToPoint(2.933, 47.732, 800, {.forwards = false});
-	chassis.moveToPose(2.933, 47.732, 50, 900, {.forwards = false});//midgoal
-	intake_move(-12000);
+	chassis.turnToPoint(-32, -5, 700);
+	bar.set_value(true);
+	chassis.moveToPoint(-32, -25, 700);
 	pros::delay(500);
-	intake_move(12000);
-
-	chassis.moveToPoint(-19.551, 25.245, 800, {.forwards = false});
-	
-	chassis.turnToPoint(-19.147, 48.922, 700);
-	chassis.moveToPoint(-19.147, 48.922, 800);
-
+	chassis.moveToPoint(-32, 48, 1500, {.forwards = false, .maxSpeed = 60});
+	pros::delay(1500);
+	stopper.set_value(true);
 }
+
 
 void right_auton() {
 
