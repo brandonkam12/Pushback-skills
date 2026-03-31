@@ -50,6 +50,8 @@ void left_auton() {
 
 	chassis.moveToPoint(-30.132, 16.266, 900);
 
+	chassis.turnToPoint(-38.559, , int timeout)
+
 	chassis.turnToPoint(2.933, 47.732, 800, {.forwards = false});
 	chassis.moveToPose(2.933, 47.732, 50, 900, {.forwards = false});//midgoal
 	intake_move(-12000);
