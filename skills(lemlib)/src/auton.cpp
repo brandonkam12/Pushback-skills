@@ -29,7 +29,7 @@ void left_auton() {
   chassis.moveToPoint(-10, 25, 1000, {.maxSpeed = 76});
   pros::delay(500);
   bar.set_value(true);
-  pros::delay(200);
+  pros::delay(300);
   bar.set_value(false);
   chassis.turnToPoint(-36, 54, 700);
   chassis.moveToPoint(-33, 38, 700);
@@ -42,10 +42,10 @@ void left_auton() {
 
   chassis.turnToPoint(-50, 0, 600);
   chassis.moveToPoint(4, 45, 600, {.forwards = false});
-  intake_move(8000);
+  intake_move(6000);
   pros::delay(750);
   midgoalswitch.set_value(false);
-  pros::delay(1000);
+  pros::delay(800);
   midgoalswitch.set_value(true);
   intake_move(12000);
 
@@ -53,9 +53,9 @@ void left_auton() {
 
 	chassis.turnToPoint(-36, -10, 700);
 	bar.set_value(true);
-	chassis.moveToPoint(-28, -30, 700, {.maxSpeed = 60});
+	chassis.moveToPoint(-32, -32, 1500, {.maxSpeed = 60});
 	pros::delay(1000);
-	chassis.moveToPoint(-36, 48, 1500, {.forwards = false, .maxSpeed = 60});
+	chassis.moveToPoint(-38, 50, 1500, {.forwards = false, .maxSpeed = 60});
 	pros::delay(1500);
 	stopper.set_value(true);
 }
