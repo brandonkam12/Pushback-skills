@@ -359,7 +359,7 @@ void elimleft_auton() {
   chassis.moveToPoint(24.265, 13.599, 700);
 
   chassis.turnToPoint(23.999, 31.465, 500);
-  chassis.moveToPoint(23.999, 31.465, 700);
+  chassis.moveToPoint(23.999, 31.465, 700);//wing
   
 }
 void elimright_auton() {
@@ -377,7 +377,7 @@ void elimright_auton() {
   chassis.moveToPoint(24.265, 13.599, 700);
 
   chassis.turnToPoint(23.999, 31.465, 500);
-  chassis.moveToPoint(23.999, 31.465, 700);
+  chassis.moveToPoint(23.999, 31.465, 700);//wing
   
 }
 
