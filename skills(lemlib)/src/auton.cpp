@@ -358,7 +358,18 @@ void tensawp_auton() {
                       {.forwards = false}); // middle goal 2
   stopper.set_value(true);
 }
-void elimleft_auton() {}
+void elimleft_auton() {
+
+	
+  chassis.moveToPoint(30, -30, 700);
+
+  chassis.turnToPoint(24.265, 13.599, 500);
+  chassis.moveToPoint(24.265, 13.599, 700);
+
+  chassis.turnToPoint(23.999, 31.465, 500);
+  chassis.moveToPoint(23.999, 31.465, 700);
+  
+}
 void elimright_auton() {
   chassis.setPose({0, 0, 0});
 
@@ -366,6 +377,16 @@ void elimright_auton() {
 
   chassis.turnToPoint(4.064, 112.434, 500);
   intakelift.set_value(true);
+
+  
+  chassis.moveToPoint(30, -30, 700);
+
+  chassis.turnToPoint(24.265, 13.599, 500);
+  chassis.moveToPoint(24.265, 13.599, 700);
+
+  chassis.turnToPoint(23.999, 31.465, 500);
+  chassis.moveToPoint(23.999, 31.465, 700);
+  
 }
 
 void run_auton_by_number(int auton_number) {
