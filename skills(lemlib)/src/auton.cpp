@@ -304,12 +304,53 @@ void sawp_auton() {
 
 
 void tensawp_auton() {
+	chassis.setPose({0, 0, 0});	
+	intake_move(12000);
+
+	chassis.moveToPoint(100.92, 1.355, 800);
+
+	chassis.turnToPoint(102.274, -29.802, 500);
+	bar.set_value(true);
+	chassis.moveToPoint(102.274, -29.802, 800, {.maxSpeed = 70});//match loader
+	pros::delay(500);
+	
+	chassis.moveToPoint(104.306, 58.926, 800, {.forwards = false, .maxSpeed = 60});//scoring
+	bar.set_value(false);
+	stopper.set_value(true);
+	pros::delay(1000);
+	stopper.set_value(false);
+
+	chassis.moveToPoint(102.274, 9.482, 800);
+
+	chassis.turnToPoint(8.805, 103.629, 500);
+	chassis.moveToPoint(8.805, 103.629, 800);//middle balls and middle goal
+	intake_move(-12000);
+	intakelift.set_value(true);
+	pros::delay(500);
+
+	chassis.moveToPoint(41.316, 68.409, 500);
+	intake_move(12000);
+	
+	chassis.turnToPoint(-69.763, 69.086, 500);
+	chassis.moveToPoint(-69.763, 69.086, 800);//middle balls 2
+
+	midgoalswitch.set_value(false);
+	chassis.turnToPoint(-41.316, 97.533, 500, {.forwards = false});
+	chassis.moveToPoint(-41.316, 97.533, 800, {.forwards = false});//middle goal 2
+	stopper.set_value(true);
 
 }
 void elimleft_auton() {
 
 }
 void elimright_auton() {
+	chassis.setPose({0, 0, 0});
+
+	chassis.moveToPoint(37.93, 79.245, 900);
+
+	chassis.turnToPoint(4.064, 112.434, 500);
+	intakelift.set_value(true);
+
 
 }
 

@@ -102,8 +102,6 @@ void initialize() {
 
     mouth.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     outtake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    left_legs.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    right_legs.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
     bar.set_value(false);
     wing.set_value(false);
@@ -138,10 +136,10 @@ while (imu.is_calibrating()) {
                 pros::lcd::set_text(7, "skills, sawp, next page");
             }
             else if (selector_stage == 3) {
-                pros::lcd::set_text(7, "forwards, ");
+                pros::lcd::set_text(7, "10sawp, elimleft, elimright");
             }
             else {
-                pros::lcd::set_text(6, "0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = forwards");
+                pros::lcd::set_text(6, "// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright");
                 pros::lcd::set_text(7, "auton selected: " + std::to_string(selected_auton));
             }
             pros::delay(100);
