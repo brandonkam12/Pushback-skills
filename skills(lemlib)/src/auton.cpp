@@ -1,5 +1,6 @@
 #include "autons.hpp"
 
+#include "pros/rtos.hpp"
 #include "robot_config.hpp"
 #include <sys/_intsup.h>
 
@@ -55,9 +56,18 @@ void left_auton() {
 	bar.set_value(true);
 	chassis.moveToPoint(-32, -32, 1500, {.maxSpeed = 60});
 	pros::delay(1000);
-	chassis.moveToPoint(-38, 50, 1500, {.forwards = false, .maxSpeed = 60});
+	chassis.moveToPoint(-38, 50, 1500, {.forwards = false, .maxSpeed = 60});//scoring
 	pros::delay(1500);
 	stopper.set_value(true);
+
+	chassis.moveToPoint(-32, 10, 700);
+
+  chassis.turnToPoint(-48, 10, 500);
+  chassis.moveToPoint(-48, 10, 800);
+
+  chassis.turnToPoint(-48, 31, 500, {.forwards = false});
+  chassis.moveToPoint(-48, 31, 800, {.forwards = false});//wing
+  
 }
 
 
@@ -67,7 +77,8 @@ void right_auton() {
   stopper.set_value(false);
 
   // set position to x:0, y:0, heading:0
-  chassis.setPose(0, 0, 0);
+  chassis.setPose(0, 0,0);
+  
 
   chassis.moveToPoint(10, 25, 700, {.minSpeed = 55});
   chassis.turnToPoint(36, 54, 1000);
@@ -93,18 +104,18 @@ void right_auton() {
   bar.set_value(true);
   chassis.moveToPoint(34, -34, 1000, {.maxSpeed = 60});
   pros::delay(350);
-  chassis.moveToPoint(32, 48, 1500, {.forwards = false, .maxSpeed = 60});
+  chassis.moveToPoint(32, 48, 1500, {.forwards = false, .maxSpeed = 60});//scoring
   pros::delay(1500);
   stopper.set_value(true);
 
   
-  chassis.moveToPoint(30, -30, 700);
+  chassis.moveToPoint(32, 10, 700);
 
-  chassis.turnToPoint(24.265, 13.599, 500);
-  chassis.moveToPoint(24.265, 13.599, 700);
+  chassis.turnToPoint(21, 10, 500);
+  chassis.moveToPoint(22, 10, 700);
 
-  chassis.turnToPoint(23.999, 31.465, 500);
-  chassis.moveToPoint(23.999, 31.465, 700);
+  chassis.turnToPoint(20, 31, 500, {.forwards = false});
+  chassis.moveToPoint(20, 31, 700, {.forwards = false});//wing
   
 }
 
@@ -313,42 +324,60 @@ void sawp_auton() {
 }
 
 void tensawp_auton() {
-  chassis.setPose({0, 0, 0});
+  chassis.setPose({0, 0, 90});
   intake_move(12000);
 
-  chassis.moveToPoint(100.92, 1.355, 800);
+  chassis.moveToPoint(34, 0, 1000);
 
-  chassis.turnToPoint(102.274, -29.802, 500);
+ chassis.turnToPoint(34, -22, 1000);
   bar.set_value(true);
-  chassis.moveToPoint(102.274, -29.802, 800, {.maxSpeed = 70}); // match loader
-  pros::delay(500);
+  chassis.moveToPoint(34, -20, 1000, {.maxSpeed = 40}); // match loader
+  pros::delay(1000);
 
-  chassis.moveToPoint(104.306, 58.926, 800,
-                      {.forwards = false, .maxSpeed = 60}); // scoring
+  chassis.moveToPoint(34, 48, 900,{.forwards = false, .maxSpeed = 60}); // scoring
   bar.set_value(false);
+  pros::delay(1000);
   stopper.set_value(true);
   pros::delay(1000);
   stopper.set_value(false);
 
-  chassis.moveToPoint(102.274, 9.482, 800);
+  chassis.moveToPoint(15, 25, 1000);
+  pros::delay(800);
+  bar.set_value(true);
+  pros::delay(300);
+  bar.set_value(false);
 
-  chassis.turnToPoint(8.805, 103.629, 500);
-  chassis.moveToPoint(8.805, 103.629, 800); // middle balls and middle goal
-  intake_move(-12000);
+  chassis.moveToPoint(0, 40, 1000, {.maxSpeed = 60}); // middle balls and middle goal
+  intake_move(-6000);
+  intakelift.set_value(false);
+  pros::delay(2000);
   intakelift.set_value(true);
-  pros::delay(500);
-
-  chassis.moveToPoint(41.316, 68.409, 500);
+  chassis.moveToPoint(15, 35, 500, {.forwards = false});
   intake_move(12000);
 
-  chassis.turnToPoint(-69.763, 69.086, 500);
-  chassis.moveToPoint(-69.763, 69.086, 800); // middle balls 2
+  chassis.turnToPoint(-18, 31, 300);
+  chassis.moveToPoint(-18, 26, 690); // middle balls 2
+  pros::delay(1000);
+  bar.set_value(true);
+  pros::delay(300);
+  bar.set_value(false);
 
+
+  chassis.turnToPoint(-55, 0, 500);
+  chassis.moveToPoint(-22, 46, 800, {.forwards = false, .maxSpeed = 60});
+  pros::delay(750);
   midgoalswitch.set_value(false);
-  chassis.turnToPoint(-41.316, 97.533, 500, {.forwards = false});
-  chassis.moveToPoint(-41.316, 97.533, 800,
-                      {.forwards = false}); // middle goal 2
-  stopper.set_value(true);
+  pros::delay(1000);
+  midgoalswitch.set_value(true);
+
+  chassis.moveToPoint(-34, 42, 690);
+  pros::delay(500);
+  midgoaldescore.set_value(true);
+  chassis.moveToPoint(-22, 46, 690, {.forwards = false, .maxSpeed = 60});
+//   chassis.turnToPoint(-41.316, 97.533, 500, {.forwards = false});
+//   chassis.moveToPoint(-41.316, 97.533, 800,
+//                       {.forwards = false}); // middle goal 2
+//   stopper.set_value(true);
 }
 void elimleft_auton() {
 
