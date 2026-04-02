@@ -270,17 +270,15 @@ void sawp_auton() {
   stopper.set_value(false);
 
   chassis.moveToPoint(12, 28, 1000, {.minSpeed = 100});
-  pros::delay(800);
-  bar.set_value(true);
-  pros::delay(200);
-  bar.set_value(false);
   // chassis.moveToPoint(15, 35, 500,  {.forwards = false, .minSpeed = 100});
   // intake_move(12000);
 
-  chassis.turnToPoint(-10, 28, 1000);
-  chassis.moveToPoint(-10, 28, 1000, {.minSpeed = 100}); // middle balls 2
+  chassis.turnToPoint(-20, 28, 1000);
+  chassis.moveToPoint(-20, 28, 1000, {.minSpeed = 100}); // middle balls 2
   chassis.turnToPoint(-60, 0, 1000);
-   chassis.moveToPoint(-60, 0, 1000, {.minSpeed = 100});
+  chassis.moveToPoint(-60, 0, 1000, {.minSpeed = 100});
+  chassis.turnToPoint(-60, -2, 1000);
+  chassis.moveToPoint(-60, 54, 1000, {.forwards = false});
 
 
 }
