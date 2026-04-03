@@ -286,7 +286,6 @@ void sawp_auton() {
   bar.set_value(true);
   chassis.moveToPoint(-55, -35, 1000, {.maxSpeed = 50});
   pros::delay(2000);
-  chassis.moveToPoint(-55, -5, 300, {.minSpeed = 100});
   chassis.turnToPoint(-10, 43, 1000, {.forwards = false});
   chassis.moveToPoint(-10, 43, 1000, {.forwards = false, .maxSpeed = 110});
   pros::delay(750);
