@@ -13,7 +13,7 @@
 int selector_stage = 0;
 
 // 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 6;
+int selected_auton = 4;
 // 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright 
 
 // void left_callback() {
