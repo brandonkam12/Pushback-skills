@@ -124,7 +124,6 @@ void opcontrol() {
             intake_move(12000);
             if (scoremode_bool) {
                 stopper.set_value(true);
-                intakelift.set_value(true);
             } else {
                 stopper.set_value(false);
             }
@@ -132,9 +131,6 @@ void opcontrol() {
             intake_move(-12000);
             stopper.set_value(true);
             intakelift.set_value(false);
-            if (selected_auton == 2) {
-                intakelift.set_value(false);
-            }
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             intake_move(12000);
             stopper.set_value(false);
@@ -143,9 +139,6 @@ void opcontrol() {
             intake_move(-12000);
             stopper.set_value(false);
             intakelift.set_value(true);
-            if (selected_auton == 2) {
-                intakelift.set_value(false);
-            }
         } else {
             intake_brake();
         }
