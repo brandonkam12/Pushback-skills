@@ -114,7 +114,7 @@ void opcontrol() {
             scoremode_bool = true;
         }
 
-        if (scoremode_bool) {
+        if (scoremode_bool == true) {//true is up false is down
             midgoalswitch.set_value(true);
         } else {
             midgoalswitch.set_value(false);
@@ -127,18 +127,30 @@ void opcontrol() {
             } else {
                 stopper.set_value(false);
             }
+            if (scoremode_bool == false){
+                intake_move(6000);
+            }
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
             intake_move(-12000);
             stopper.set_value(true);
             intakelift.set_value(false);
+            if (selected_auton == 2) {
+                intake_move(-6000);
+            }
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             intake_move(12000);
             stopper.set_value(false);
             intakelift.set_value(true);
+            if (scoremode_bool == false){
+                intake_move(6000);
+            }
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
             intake_move(-12000);
             stopper.set_value(false);
             intakelift.set_value(true);
+            if (selected_auton == 2) {
+                intake_move(-6000);
+            }
         } else {
             intake_brake();
         }
