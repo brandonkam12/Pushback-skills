@@ -151,11 +151,8 @@ void run_auton_by_number(int auton_number) {
   case 1:
     skills75_auton();
     break;
-<<<<<<< Updated upstream
-=======
   // default:
   //   left_auton();
   //   break;
->>>>>>> Stashed changes
   }
 }
