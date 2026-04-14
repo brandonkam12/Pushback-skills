@@ -12,9 +12,9 @@
 
 int selector_stage = 0;
 
-// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = skills75 +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
+// 0 = skills, 1 = skills75 +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
 int selected_auton = 2;
-// 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = skills75
+// 0 = skills, 1 = skills75
 
 void on_button_pressed() {
     if (selected_auton < 7) {
@@ -26,7 +26,7 @@ void on_button_pressed() {
 };
 
 bool bar_bool = true;
-
+bool slowscoremode_bool =false;
 
 int get_color(double hue) {
     int c = 2;
@@ -72,8 +72,7 @@ void initialize() {
     stopper.set_value(false);
     intakelift.set_value(true);
 
-    pros::lcd::set_text(5, "0 = left, 1 = right, 2 = skills");
-    pros::lcd::set_text(6, "3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright");
+    pros::lcd::set_text(6, "0 = skills, 1 = skills75");
 
     chassis.calibrate();
     pros::delay(1000);
@@ -98,6 +97,7 @@ void autonomous() {
 }
 
 void opcontrol() {
+    midgoaldescore.set_value(true);
     while (true) {
         const double drive_temp = (left_legs.get_temperature() + right_legs.get_temperature()) / 2;
         controller.print(0, 0, "DT: %0.1f", drive_temp);
@@ -108,12 +108,9 @@ void opcontrol() {
         left_legs.move(leftY + rightX);
         right_legs.move(leftY - rightX);
 
-        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-            scoremode_bool = false;
-        } else {
-            scoremode_bool = true;
+        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+            scoremode_bool = !scoremode_bool;
         }
-
         if (scoremode_bool == true) {//true is up false is down
             midgoalswitch.set_value(true);
         } else {
@@ -121,44 +118,66 @@ void opcontrol() {
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-            intake_move(12000);
+            //outtake
             if (scoremode_bool) {
                 stopper.set_value(true);
             } else {
                 stopper.set_value(false);
             }
             if (scoremode_bool == false){
-                intake_move(6000);
+                mouth.move_voltage(3000);
+                intake.move_voltage(3000);
+            } else {
+                if (slowscoremode_bool == true) {
+                    mouth.move_voltage(3000);
+                    intake.move_voltage(3000);
+                
+                }
+                else{
+                    mouth.move_voltage(12000);
+                    intake.move_voltage(12000);
+                }
             }
+            
+            
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-            intake_move(-12000);
+            mouth.move_voltage(-3000);
+            intake.move_voltage(-3000);
             stopper.set_value(true);
-            intakelift.set_value(false);
-            if (selected_auton == 2) {
-                intake_move(-6000);
-            }
+            intakelift.set_value(false);            
+        }
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-            intake_move(12000);
+            //outtake
             stopper.set_value(false);
             intakelift.set_value(true);
             if (scoremode_bool == false){
-                intake_move(6000);
+                mouth.move_voltage(3000);
+                intake.move_voltage(3000);
+            } else {
+                if (slowscoremode_bool == true) {
+                    mouth.move_voltage(3000);
+                    intake.move_voltage(3000);
+                
+                }
+                else{
+                    mouth.move_voltage(12000);
+                    intake.move_voltage(12000);
+                }
             }
+            
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-            intake_move(-12000);
+            mouth.move_voltage(-6000);
+            intake.move_voltage(-6000);
             stopper.set_value(false);
             intakelift.set_value(true);
-            if (selected_auton == 2) {
-                intake_move(-6000);
-            }
         } else {
             intake_brake();
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-            wing.set_value(false);
+            slowscoremode_bool = true;
         } else {
-            wing.set_value(true);
+            slowscoremode_bool = false;
         }
 
         if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {

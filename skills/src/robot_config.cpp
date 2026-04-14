@@ -122,12 +122,7 @@ void right(int voltage, double time_ms) {
     right_legs.move_voltage(0);
 }
 
-void intake_move(int voltage) {
 
-    mouth.move_voltage(voltage);
-    outtake.move_voltage(voltage);
-
-}
 
 void intake_brake() {
     mouth.brake();

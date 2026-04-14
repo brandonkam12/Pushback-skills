@@ -12,9 +12,9 @@
 
 int selector_stage = 0;
 
-// 0 = Left, 1 = Right, 2 = Skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = skills75 +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
+// 0 = Left, 1 = Right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
 int selected_auton = 2;
-// 0 = left, 1 = right, 2 = skills, 3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = skills75
+// 0 = left, 1 = right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright
 
 void on_button_pressed() {
     if (selected_auton < 7) {
@@ -72,8 +72,8 @@ void initialize() {
     stopper.set_value(false);
     intakelift.set_value(true);
 
-    pros::lcd::set_text(5, "0 = left, 1 = right, 2 = skills");
-    pros::lcd::set_text(6, "3 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright");
+    pros::lcd::set_text(5, "0 = left, 1 = right, 2 = sawp");
+    pros::lcd::set_text(6, "4 = 10sawp, 5 = elimleft, 6 = elimright");
 
     chassis.calibrate();
     pros::delay(1000);
