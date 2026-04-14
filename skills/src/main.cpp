@@ -118,12 +118,8 @@ void opcontrol() {
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-            //outtake
-            if (scoremode_bool) {
-                stopper.set_value(true);
-            } else {
-                stopper.set_value(false);
-            }
+            //outtake scoring
+            stopper.set_value(true);
             if (scoremode_bool == false){
                 mouth.move_voltage(12000);
                 outtake.move_voltage(3000);
@@ -142,15 +138,13 @@ void opcontrol() {
             
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
             //reverse
+            stopper.set_value(false);
             mouth.move_voltage(-3000);
-            outtake.move_voltage(-12000);
-            stopper.set_value(true);
-            intakelift.set_value(false);            
+            outtake.move_voltage(-12000);          
         }
         else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             //outtake
             stopper.set_value(false);
-            intakelift.set_value(true);
             if (scoremode_bool == false){
                 mouth.move_voltage(12000);
                 outtake.move_voltage(3000);
@@ -168,10 +162,9 @@ void opcontrol() {
             
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
             //reverse
+            stopper.set_value(false);
             mouth.move_voltage(-3000);
             outtake.move_voltage(-12000);
-            stopper.set_value(false);
-            intakelift.set_value(true);
         } else {
             intake_brake();
         }
