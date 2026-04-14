@@ -122,14 +122,11 @@ void opcontrol() {
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
             intake_move(12000);
-            if (scoremode_bool) {
-                stopper.set_value(true);
-            } else {
-                stopper.set_value(false);
-            }
+            //outtake scoring
+            stopper.set_value(true);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
             intake_move(-12000);
-            stopper.set_value(true);
+            stopper.set_value(false);
             intakelift.set_value(false);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             intake_move(12000);
