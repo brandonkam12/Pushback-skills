@@ -125,49 +125,51 @@ void opcontrol() {
                 stopper.set_value(false);
             }
             if (scoremode_bool == false){
-                mouth.move_voltage(3000);
-                intake.move_voltage(3000);
+                mouth.move_voltage(12000);
+                outtake.move_voltage(3000);
             } else {
                 if (slowscoremode_bool == true) {
                     mouth.move_voltage(3000);
-                    intake.move_voltage(3000);
+                    outtake.move_voltage(3000);
                 
                 }
                 else{
                     mouth.move_voltage(12000);
-                    intake.move_voltage(12000);
+                    outtake.move_voltage(12000);
                 }
             }
             
             
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+            //reverse
             mouth.move_voltage(-3000);
-            intake.move_voltage(-3000);
+            outtake.move_voltage(-12000);
             stopper.set_value(true);
             intakelift.set_value(false);            
         }
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             //outtake
             stopper.set_value(false);
             intakelift.set_value(true);
             if (scoremode_bool == false){
-                mouth.move_voltage(3000);
-                intake.move_voltage(3000);
+                mouth.move_voltage(12000);
+                outtake.move_voltage(3000);
             } else {
                 if (slowscoremode_bool == true) {
                     mouth.move_voltage(3000);
-                    intake.move_voltage(3000);
+                    outtake.move_voltage(3000);
                 
                 }
                 else{
                     mouth.move_voltage(12000);
-                    intake.move_voltage(12000);
+                    outtake.move_voltage(12000);
                 }
             }
             
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-            mouth.move_voltage(-6000);
-            intake.move_voltage(-6000);
+            //reverse
+            mouth.move_voltage(-3000);
+            outtake.move_voltage(-12000);
             stopper.set_value(false);
             intakelift.set_value(true);
         } else {
