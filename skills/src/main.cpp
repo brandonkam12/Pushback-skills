@@ -70,7 +70,7 @@ void initialize() {
     wing.set_value(false);
     midgoalswitch.set_value(true);
     stopper.set_value(false);
-    intakelift.set_value(true);
+    intakelift.set_value(false);
 
     pros::lcd::set_text(6, "0 = skills, 1 = skills75");
 
@@ -108,9 +108,12 @@ void opcontrol() {
         left_legs.move(leftY + rightX);
         right_legs.move(leftY - rightX);
 
-        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
-            scoremode_bool = !scoremode_bool;
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+            scoremode_bool = false;
+        } else {
+            scoremode_bool = true;
         }
+
         if (scoremode_bool == true) {//true is up false is down
             midgoalswitch.set_value(true);
         } else {

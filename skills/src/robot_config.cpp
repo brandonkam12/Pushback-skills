@@ -2,8 +2,8 @@
 #include "pros/distance.hpp"
 
 namespace {
-constexpr int MOUTH_PORT = 1;
-constexpr int OUTTAKE_PORT = -10;
+constexpr int MOUTH_PORT = -10;
+constexpr int OUTTAKE_PORT = 0;
 constexpr int HORIZONTAL_PORT = 15;
 constexpr int VERTICAL_PORT = -16;
 constexpr int IMU_PORT = 14;
