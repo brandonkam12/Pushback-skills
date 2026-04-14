@@ -23,7 +23,8 @@ void skillsleftxreset() {
 
 void skills_auton() {
   chassis.setPose({0, 0, 0});
-  intake_move(12000);
+  mouth.move_voltage(12000);
+  outtake.move_voltage(12000);
   pros::delay(2500);
   chassis.moveToPoint(0, 10, 1000);
   pros::delay(2500);
@@ -42,7 +43,8 @@ void skills_auton() {
   // midgoalswitch.set_value(false);
   // pros::delay(5000);
   // midgoalswitch.set_value(true);
-  // intake_move(12000);
+  // mouth.move_voltage(12000)
+outtake.move_voltage(12000);
 
 
 
@@ -53,7 +55,8 @@ void skills_auton() {
 void skills75_auton() {
   bar.set_value(false);
   intakelift.set_value(true);
-  intake_move(12000);
+  mouth.move_voltage(12000);
+  outtake.move_voltage(12000);
   chassis.setPose({0, 0, 0});
   chassis.moveToPoint(13, 25, 700, {.minSpeed = 55});
   pros::delay(500);
@@ -64,9 +67,11 @@ void skills75_auton() {
   chassis.moveToPoint(-2, 38, 1000, {.minSpeed = 55});
   pros::delay(400);
   intakelift.set_value(false);
-  intake_move(-8000);
+  mouth.move_voltage(-8000);
+  outtake.move_voltage(-8000);
   pros::delay(1000);
-  intake_move(12000);
+  mouth.move_voltage(12000);
+  outtake.move_voltage(12000);
   intakelift.set_value(true);
   chassis.turnToPoint(32, 12, 500, {.forwards = false});
   chassis.moveToPoint(32, 12, 1500, {.forwards = false});

@@ -13,7 +13,7 @@
 int selector_stage = 0;
 
 // 0 = skills, 1 = skills75 +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 2;
+int selected_auton = 1;
 // 0 = skills, 1 = skills75
 
 void on_button_pressed() {

@@ -51,5 +51,4 @@ void backwards(int voltage, double time_ms);
 void forward(int voltage, double time_ms);
 void left(int voltage, double time_ms);
 void right(int voltage, double time_ms);
-void intake_move(int voltage);
 void intake_brake();
