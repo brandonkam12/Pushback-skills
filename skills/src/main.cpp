@@ -13,7 +13,7 @@
 int selector_stage = 0;
 
 // 0 = skills, 1 = skills75 +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 1;
+int selected_auton = 0;
 // 0 = skills, 1 = skills75
 
 void on_button_pressed() {
@@ -45,20 +45,17 @@ void display_number(short int line, int nums) {
 }
 
 void on_center_button() {
-    static bool pressed = false;
-    pressed = !pressed;
-    if (pressed) {
-        pros::lcd::set_text(2, "I was pressed!");
-    } else {
-        pros::lcd::clear_line(2);
-    }
+    pros::lcd::set_text(1, std::to_string(chassis.getPose().x));
+    pros::lcd::set_text(2, std::to_string(chassis.getPose().y));
+    pros::lcd::set_text(3, std::to_string(chassis.getPose().theta));
 }
 
 void initialize() {
     pros::lcd::initialize();
 
+
     pros::lcd::register_btn0_cb(on_button_pressed);
-    pros::lcd::register_btn1_cb(on_button_pressed);
+    pros::lcd::register_btn1_cb(on_center_button);
     pros::lcd::register_btn2_cb(on_button_pressed);
     
     pros::lcd::set_text(7, "auton selected: " + std::to_string(selected_auton));
@@ -165,6 +162,8 @@ void opcontrol() {
                     outtake.move_voltage(12000);
                 }
             }
+
+            
             
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
             //reverse

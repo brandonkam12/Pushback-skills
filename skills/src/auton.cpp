@@ -26,25 +26,38 @@ void skills_auton() {
   mouth.move_voltage(12000);
   outtake.move_voltage(12000);
   pros::delay(2500);
-  chassis.moveToPoint(0, 10, 1000);
+  chassis.moveToPoint(0, 5, 1000);
   pros::delay(2500);
   midgoaldescore.set_value(true);
-  chassis.moveToPoint(0, -20, 2000, {.forwards = false});
-  midgoaldescore.set_value(false); 
-  chassis.moveToPoint(0, 15,2000, {.maxSpeed = 60});
+  chassis.moveToPoint(0, -12, 2000, {.forwards = false});
+  midgoaldescore.set_value(false);
+  chassis.turnToPoint(-3, 18,1000, {.maxSpeed = 40});
+  chassis.moveToPoint(0, 18,1000, {.maxSpeed = 40});
   chassis.setPose({0, 0, 0});
-  chassis.turnToPoint(-24, 40, 500);  
-  // chassis.moveToPoint(-24, 40, 1500, {.forwards = false});
-  // chassis.turnToPoint(-26, 38, 500);
-  // chassis.moveToPoint(-26, 38, 500);
-  // chassis.moveToPoint(-24, 40, 1000, {.forwards = false});
+  chassis.moveToPose(-4, -60,45,2000, {.forwards = false, .minSpeed = 10});
+  chassis.turnToPoint(25, -10, 1000);
+  chassis.moveToPoint(25, -10, 1000, {.maxSpeed = 40});
+
+  chassis.turnToPoint(4, -38, 1000, {.forwards = false});
+  chassis.moveToPoint(4, -38, 1000, {.forwards = false, .maxSpeed = 40});
+  pros::delay(1000);
+  outtake.move_voltage(4000);
+  mouth.move_voltage(12000); 
+  midgoalswitch.set_value(false);
+  pros::delay(4000);
+  midgoalswitch.set_value(true);
+  chassis.turnToPoint(50, 0,1000);
+  chassis.moveToPoint(50, 0, 2000);
+  chassis.turnToPoint(50, 30, 1000);
+  bar.set_value(true);
+  chassis.moveToPoint(50, 30, 2000);  
+
   // intake_move(7000);
   // pros::delay(750)
   // midgoalswitch.set_value(false);
   // pros::delay(5000);
   // midgoalswitch.set_value(true);
   // mouth.move_voltage(12000)
-outtake.move_voltage(12000);
 
 
 
