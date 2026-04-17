@@ -13,7 +13,7 @@
 int selector_stage = 0;
 
 // 0 = Left, 1 = Right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = 10left +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 2;
+int selected_auton = 4;
 // 0 = left, 1 = right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = 10left
 
 void on_button_pressed() {
