@@ -85,8 +85,8 @@ void right_auton() {
 
   chassis.moveToPoint(10, 25, 700, {.minSpeed = 55});
   chassis.turnToPoint(36, 54, 1000, {.minSpeed = 55});
-  chassis.moveToPoint(31, 36, 1000, {.minSpeed = 55});
-  pros::delay(600);
+  chassis.moveToPoint(33, 40, 1000, {.minSpeed = 55});
+  pros::delay(400);
   bar.set_value(true);
   pros::delay(600);
   bar.set_value(false);
@@ -103,23 +103,22 @@ void right_auton() {
   chassis.turnToPoint(-40, 48, 1000, {.minSpeed = 55});
   chassis.moveToPoint(26, 12, 1000, {.forwards = false, .minSpeed = 55});
 
-  chassis.turnToPoint(32, -15, 1000, {.minSpeed = 55});
+  chassis.turnToPoint(26, -15, 600, {.minSpeed = 55});
   bar.set_value(true);
-  chassis.moveToPoint(34, -40, 1000, {.maxSpeed = 60});
-  chassis.moveToPoint(34, -48, 1000, {.maxSpeed = 60});
+  chassis.moveToPoint(26, -40, 1000, {.maxSpeed = 60});
+  chassis.moveToPoint(26, -48, 1000, {.maxSpeed = 60});
   pros::delay(400);
-  chassis.moveToPoint(32, 48, 1500, {.forwards = false, .maxSpeed = 60});//scoring
+  chassis.moveToPoint(26, 48, 1500, {.forwards = false, .maxSpeed = 60});//scoring
   pros::delay(900);
   stopper.set_value(true);
   pros::delay(750);
   bar.set_value(false);
   stopper.set_value(false);
   
-  chassis.moveToPoint(28, 10, 700);
+  chassis.moveToPoint(26, 10, 700);
 
   chassis.turnToPoint(20, 10, 500, {.forwards = false});
   chassis.moveToPoint(20, 10, 700, {.forwards = false});
-
   chassis.turnToPoint(20, 31, 500, {.forwards = false});
   chassis.moveToPoint(20, 31, 700, {.forwards = false});//wing
   
