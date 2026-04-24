@@ -90,7 +90,7 @@ void skills_auton() {
   chassis.turnToPoint(95, 12, 500);
   chassis.moveToPoint(95, 12, 2000);
   chassis.turnToHeading(0, 800);
-  bar.set_value(true);
+  bar.set_value(true);//a
   chassis.moveToPoint(95, 50, 1100, {.maxSpeed = 60});
   chassis.moveToPoint(95, 54, 400, {.maxSpeed = 60});
   pros::delay(2000);
