@@ -13,7 +13,7 @@
 int selector_stage = 0;
 
 // 0 = Left, 1 = Right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = 10left +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 2;
+int selected_auton = 1;
 // 0 = left, 1 = right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = 10left
 
 void on_button_pressed() {
@@ -118,26 +118,30 @@ void opcontrol() {
             midgoalswitch.set_value(true);
         } else {
             midgoalswitch.set_value(false);
+            stopper.set_value (false);
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
             intake_move(12000);
             //outtake scoring
+            intakelift.set_value(false);
             stopper.set_value(true);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
             intake_move(-12000);
             stopper.set_value(false);
-            intakelift.set_value(false);
+            intakelift.set_value(true);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             intake_move(12000);
             stopper.set_value(false);
-            intakelift.set_value(true);
+            intakelift.set_value(false);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
             intake_move(-12000);
             stopper.set_value(false);
             intakelift.set_value(true);
         } else {
+            intakelift.set_value(false);
             intake_brake();
+
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {

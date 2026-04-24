@@ -147,6 +147,7 @@ void opcontrol() {
         }
         else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             //outtake
+            intakelift.set_value(true);
             stopper.set_value(false);
             if (scoremode_bool == false){
                 mouth.move_voltage(12000);
@@ -174,6 +175,7 @@ void opcontrol() {
         } else {
             intake_brake();
             intakelift.set_value(true);
+            stopper.set_value(false);
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
