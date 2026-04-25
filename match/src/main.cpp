@@ -13,16 +13,35 @@
 int selector_stage = 0;
 
 // 0 = Left, 1 = Right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = 10left +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 1;
+int selected_auton = 2;
 // 0 = left, 1 = right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = 10left
 
 void on_button_pressed() {
-    if (selected_auton < 7) {
+    if (selected_auton < 9) {
     selected_auton = selected_auton + 1;    
     } else {
     selected_auton = 0;
     }
-    pros::lcd::set_text(7, "auton selected: " + std::to_string(selected_auton));
+
+    if (selected_auton == 0) {
+        pros::lcd::set_text(7, "auton selected: left");
+    } else if (selected_auton == 1) {
+        pros::lcd::set_text(7, "auton selected: right");
+    } else if (selected_auton == 2) {
+        pros::lcd::set_text(7, "auton selected: sawp");
+    } else if (selected_auton == 4) {
+        pros::lcd::set_text(7, "auton selected: 10sawp");
+    } else if (selected_auton == 5) {
+        pros::lcd::set_text(7, "auton selected: elimleft");
+    } else if (selected_auton == 6) {
+        pros::lcd::set_text(7, "auton selected: elimright");
+    } else if (selected_auton == 7) {
+        pros::lcd::set_text(7, "auton selected: tenleft");
+    } else if (selected_auton == 8) {
+        pros::lcd::set_text(7, "auton selected: lowgoallastsevenball");
+    } else if (selected_auton == 9) {
+        pros::lcd::set_text(7, "auton selected: midgoallastsevenball");
+    }
 };
 
 bool bar_bool = true;
@@ -160,6 +179,10 @@ void opcontrol() {
         }
         else {
             midgoaldescore.set_value(false);
+        }
+
+        if (scoremode_bool == false) {
+            stopper.set_value(false);
         }
 
 
