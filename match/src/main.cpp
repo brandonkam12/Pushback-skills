@@ -12,12 +12,12 @@
 
 int selector_stage = 0;
 
-// 0 = Left, 1 = Right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = 10left +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
-int selected_auton = 2;
-// 0 = left, 1 = right, 2 = sawp, 4 = 10sawp, 5 = elimleft, 6 = elimright, 7 = 10left
+// 0 = Left, 1 = Right, 2 = sawp, 3 = 10sawp, 4 = elimleft, 5 = elimright, 6 = 10left +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=-=+++++++
+int selected_auton = 1;
+// 0 = left, 1 = right, 2 = sawp, 3 = 10sawp, 4 = elimleft, 5 = elimright, 6 = 10left
 
 void on_button_pressed() {
-    if (selected_auton < 9) {
+    if (selected_auton < 8) {
     selected_auton = selected_auton + 1;    
     } else {
     selected_auton = 0;
@@ -29,17 +29,17 @@ void on_button_pressed() {
         pros::lcd::set_text(7, "auton selected: right");
     } else if (selected_auton == 2) {
         pros::lcd::set_text(7, "auton selected: sawp");
-    } else if (selected_auton == 4) {
+    } else if (selected_auton == 3) {
         pros::lcd::set_text(7, "auton selected: 10sawp");
-    } else if (selected_auton == 5) {
+    } else if (selected_auton == 4) {
         pros::lcd::set_text(7, "auton selected: elimleft");
-    } else if (selected_auton == 6) {
+    } else if (selected_auton == 5) {
         pros::lcd::set_text(7, "auton selected: elimright");
-    } else if (selected_auton == 7) {
+    } else if (selected_auton == 6) {
         pros::lcd::set_text(7, "auton selected: tenleft");
-    } else if (selected_auton == 8) {
+    } else if (selected_auton == 7) {
         pros::lcd::set_text(7, "auton selected: lowgoallastsevenball");
-    } else if (selected_auton == 9) {
+    } else if (selected_auton == 8) {
         pros::lcd::set_text(7, "auton selected: midgoallastsevenball");
     }
 };
@@ -92,7 +92,7 @@ void initialize() {
     intakelift.set_value(true);
 
     pros::lcd::set_text(5, "0 = left, 1 = right, 2 = sawp");
-    pros::lcd::set_text(6, "4 = 10sawp, 5 = elimleft, 6 = elimright");
+    pros::lcd::set_text(6, "3 = 10sawp, 4 = elimleft, 5 = elimright");
 
     chassis.calibrate();
     pros::delay(1000);
@@ -160,6 +160,7 @@ void opcontrol() {
         } else {
             intakelift.set_value(false);
             intake_brake();
+            stopper.set_value(false);
 
         }
 

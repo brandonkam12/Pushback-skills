@@ -42,7 +42,8 @@ void left_auton() {
   chassis.moveToPoint(-11, 33, 700, {.forwards = false, .minSpeed = 40});
 
   chassis.turnToPoint(-50, 0, 600);
-  chassis.moveToPoint(4, 50, 600, {.forwards = false});
+  chassis.moveToPoint(0, 50, 600, {.forwards = false});
+   chassis.moveToPoint(0, 50, 400, {.forwards = false});
   intake_move(6000);
   pros::delay(750);
   midgoalswitch.set_value(false);
@@ -50,26 +51,26 @@ void left_auton() {
   midgoalswitch.set_value(true);
   intake_move(12000);
 
-  chassis.moveToPoint(-32, 5, 1000, {.minSpeed = 55});
+  chassis.moveToPoint(-30, 5, 1000, {.minSpeed = 55});
 
-	chassis.turnToPoint(-36, -10, 700);
+	chassis.turnToPoint(-34, -10, 700);
 	bar.set_value(true);
-	chassis.moveToPoint(-32, -38, 800, {.maxSpeed = 60});
-	chassis.moveToPoint(-32, -40, 400, {.maxSpeed = 60});
+	chassis.moveToPoint(-30, -38, 800, {.maxSpeed = 60});
+	chassis.moveToPoint(-30, -40, 400, {.maxSpeed = 60});
   pros::delay(400);
-	chassis.moveToPoint(-38, 50, 1500, {.forwards = false, .maxSpeed = 60});//scoring
+	chassis.moveToPoint(-32, 50, 1500, {.forwards = false, .maxSpeed = 60});//scoring
 	pros::delay(900);
 	stopper.set_value(true);
   pros::delay(1000);
   bar.set_value(false);
 
-	chassis.moveToPoint(-42, 10, 700);
+	chassis.moveToPoint(-42, 6, 700);
 
-  chassis.turnToPoint(-44, 10, 500, {.forwards = false});
-  chassis.moveToPoint(-44, 10, 800, {.forwards = false});
+  chassis.turnToPoint(-48, 6, 500, {.forwards = false});
+  chassis.moveToPoint(-48, 6, 800, {.forwards = false});
 
-  chassis.turnToPoint(-44, 31, 500, {.forwards = false});
-  chassis.moveToPoint(-44, 31, 800, {.forwards = false});//wing
+  chassis.turnToPoint(-52, 31, 500, {.forwards = false});
+  chassis.moveToPoint(-52, 31, 800, {.forwards = false});//wing
   
 }
 
@@ -83,44 +84,44 @@ void right_auton() {
   chassis.setPose(0, 0,0);
   
 
-  chassis.moveToPoint(10, 25, 700, {.minSpeed = 55});
-  chassis.turnToPoint(36, 54, 1000, {.minSpeed = 55});
-  chassis.moveToPoint(33, 40, 1000, {.minSpeed = 55});
-  pros::delay(400);
+  chassis.moveToPoint(10, 25, 700, {.minSpeed = 65});
+  chassis.turnToPoint(36, 50, 1000, {.minSpeed = 65});
+  chassis.moveToPoint(33, 50, 1000, {.minSpeed = 65});
+  pros::delay(600);
   bar.set_value(true);
   pros::delay(600);
   bar.set_value(false);
   chassis.turnToPoint(57, 80, 500);
-  chassis.moveToPoint(11, 33, 1000, {.forwards = false, .minSpeed = 55});
-
-  chassis.moveToPoint(-2, 40, 1000, {.minSpeed = 55});
-  intake_move(-6000);
+  chassis.moveToPoint(11, 37, 1000, {.forwards = false, .minSpeed = 65});
+  chassis.turnToHeading(-45, 1000);
+  chassis.moveToPoint(-2, 37, 1000, {.minSpeed = 65});
+  intake_move(-12000);
   intakelift.set_value(false);
-  pros::delay(1500);
+  pros::delay(1800);
 
   intake_move(12000);
   intakelift.set_value(true);
-  chassis.turnToPoint(-40, 48, 1000, {.minSpeed = 55});
-  chassis.moveToPoint(26, 12, 1000, {.forwards = false, .minSpeed = 55});
+  chassis.turnToPoint(-40, 48, 1000, {.minSpeed = 65});
+  chassis.moveToPoint(30, 4, 1000, {.forwards = false, .minSpeed = 65});
 
-  chassis.turnToPoint(26, -15, 600, {.minSpeed = 55});
+  chassis.turnToPoint(30, -15, 600, {.minSpeed = 65});
   bar.set_value(true);
-  chassis.moveToPoint(26, -40, 1000, {.maxSpeed = 60});
-  chassis.moveToPoint(26, -48, 1000, {.maxSpeed = 60});
-  pros::delay(400);
-  chassis.moveToPoint(26, 48, 1500, {.forwards = false, .maxSpeed = 60});//scoring
-  pros::delay(900);
+  chassis.moveToPoint(30, -40, 1000, {.maxSpeed = 60});
+  chassis.moveToPoint(30, -48, 1000, {.maxSpeed = 60});
+  pros::delay(300);
+  chassis.moveToPoint(36, 48, 1500, {.forwards = false, .maxSpeed = 60});//scoring
+  pros::delay(1000);
   stopper.set_value(true);
-  pros::delay(750);
+  pros::delay(1050);
   bar.set_value(false);
   stopper.set_value(false);
   
   chassis.moveToPoint(26, 10, 700);
 
-  chassis.turnToPoint(20, 10, 500, {.forwards = false});
-  chassis.moveToPoint(20, 10, 700, {.forwards = false});
-  chassis.turnToPoint(20, 31, 500, {.forwards = false});
-  chassis.moveToPoint(20, 31, 700, {.forwards = false});//wing
+  chassis.turnToPoint(21, 10, 500, {.forwards = false});
+  chassis.moveToPoint(21, 10, 700, {.forwards = false});
+  chassis.turnToPoint(21, 31, 500, {.forwards = false});
+  chassis.moveToPoint(21, 31, 700, {.forwards = false});//wing
   
 }
 
@@ -135,8 +136,7 @@ void sawp_auton() {
   bar.set_value(true);
   chassis.moveToPoint(33, -9, 500, {.minSpeed = 70}); // match loader
   chassis.moveToPoint(33, -32, 700, {.maxSpeed = 20}); // match loader
-
-  chassis.moveToPoint(25, 50, 900,{.forwards = false, .minSpeed = 60}); // scoring
+  chassis.moveToPoint(50, 50, 1000,{.forwards = false, .minSpeed = 60}); // scoring
   bar.set_value(false);
   pros::delay(900);
   stopper.set_value(true);
@@ -148,17 +148,17 @@ void sawp_auton() {
 //   intake_move(12000);
   // chassis.turnToPoint(-24, 30, 300);
   chassis.moveToPoint(-27, 25, 1200, {.minSpeed = 90}); // middle balls 2
-  chassis.turnToPoint(-52, 5, 500);
-  chassis.moveToPoint(-52, 5, 1100, {.minSpeed = 127});
+  chassis.turnToPoint(-50, 5, 500);
+  chassis.moveToPoint(-50, 5, 1100, {.minSpeed = 127});
   chassis.turnToHeading(180, 700);
-  chassis.moveToPoint(-52, 38, 1100, {.forwards = false, .minSpeed = 50});
+  chassis.moveToPoint(-50, 38, 1100, {.forwards = false, .minSpeed = 50});
   pros::delay(700);
   stopper.set_value(true);
   pros::delay(1000);
   stopper.set_value(false);
   bar.set_value(true);
   // chassis.moveToPoint(-58, -10, 800, {.minSpeed = 127}); // match loader
-  chassis.moveToPoint(-56, -54, 1200, {.maxSpeed = 80});
+  chassis.moveToPoint(-52, -54, 1200, {.maxSpeed = 80});
   pros::delay(1300);
   chassis.turnToPoint(-10, 28, 300, {.forwards = false});
   chassis.moveToPoint(-10, 35, 1000, {.forwards = false, .maxSpeed = 110});
@@ -486,22 +486,22 @@ void run_auton_by_number(int auton_number) {
   case 2:
     sawp_auton();
     break;
-  case 4:
+  case 3:
     tensawp_auton();
     break;
-  case 5:
+  case 4:
     elimleft_auton();
     break;
-  case 6:
+  case 5:
     elimright_auton();
     break;
-  case 7:
+  case 6:
     tenleft_auton();
     break;
-  case 8:
+  case 7:
     lowgoallastsevenball();
     break;
-  case 9:
+  case 8:
     midgoallastsevenball();
     break;
   default:

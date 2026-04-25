@@ -28,7 +28,7 @@ pros::adi::Pneumatics wing('B', false);
 pros::adi::Pneumatics midgoalswitch('C', true);
 pros::adi::Pneumatics stopper('D', false);
 pros::adi::Pneumatics midgoaldescore('E', false);
-pros::adi::Pneumatics intakelift('H', true);
+pros::adi::Pneumatics intakelift('G', true);
 
 bool scoremode_bool = true;
 
