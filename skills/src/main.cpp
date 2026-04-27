@@ -74,6 +74,8 @@ void initialize() {
     chassis.calibrate();
     pros::delay(1000);
 
+    chassis.setPose({0, 0, 0});
+
 while (imu.is_calibrating()) {
     pros::delay(10);
 }
@@ -99,8 +101,8 @@ void opcontrol() {
         const double drive_temp = (left_legs.get_temperature() + right_legs.get_temperature()) / 2;
         controller.print(0, 0, "DT: %0.1f", drive_temp);
 
-        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+        int leftY = (controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
+        int rightX = (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X)*0.8);
 
         left_legs.move(leftY + rightX);
         right_legs.move(leftY - rightX);
